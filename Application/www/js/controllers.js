@@ -15,20 +15,11 @@ angular.module('starter.controllers', [])
         });
         $timeout(collect, 500);
     };
+  //fonction timeout afin de vérifier l'actualisation du stateObject
     $timeout(collect, 500);
 })
 
 .controller('ChatsCtrl', function($scope, $rootScope, $timeout) {
-    /*$scope.$watch(function(){
-        console.log("apply : " + $rootScope.newUserExpired);
-        if(($rootScope.newUserExpired)||($rootScope.newUserID =="")){
-            console.log("new user expired");
-            $scope.hideNewUser = true;
-        }else{
-            console.log("new user still there");
-            $scope.hideNewUser = false;
-        }
-    });*/
     var maj = function(){
         $rootScope.constellation.registerStateObjectLink("*", "Brain", "newUser", "*", function(so){
             if( (so.IsExpired)||(so.Value == "") ){
@@ -39,6 +30,7 @@ angular.module('starter.controllers', [])
         });
         $timeout(maj, 1000);
     };
+  //fonction timeout pour verifier la propriété IsExpired du stateObject
     $timeout(maj);
 })
 
@@ -65,12 +57,13 @@ angular.module('starter.controllers', [])
 .controller('AjoutCtrl', function($scope, $rootScope, $state) {
     $scope.add = function(){
         console.log("add");
-        /*if(($rootScope.newUserID=="")||($rootScope.newUserExpired)){
-            console.log("aucun badge enregistré");
-                return;
-        }*/
         $rootScope.constellation.sendMessageWithSaga({ Scope: 'Package', Args: ['Brain'] }, 'AddUser', [ $rootScope.newUserID, $("#type:checked").val(), $('#firstname').val(), $('#name').val() ],
         function(response) {
+          //saga qui renvoie des entiers pour définir le résultats de la requete d'ajout d'utilisateur
+          //1 = accepter
+          //2 = champs vide
+          //3 = badge déjà utilisé
+          //4 = utilisateur déjà existant
             switch (response.Data) {
                 case 1:
                     console.log("added");
@@ -80,17 +73,16 @@ angular.module('starter.controllers', [])
                     console.log("remplis tous les champs");
                     break;
                 case 4:
-                    console.log("badge already used");
+                    console.log("badge déjà utilisé");
                     break;
                 default:
-                    console.log("already exists");
+                    console.log("utilisateur déjà existant");
             }
         });
     };
 })
 
 .controller('AccountCtrl', function($scope, $rootScope, $ionicPopup, $timeout) {
-
 
   $scope.showConfirm = function() {
       var confirmPopup = $ionicPopup.confirm({
@@ -124,5 +116,6 @@ angular.module('starter.controllers', [])
 
         $timeout(maj, 1000);
     };
+  //fonction timeout pour mettre à jour les stateObject dans la page en temps reel
     $timeout(maj);
 });
