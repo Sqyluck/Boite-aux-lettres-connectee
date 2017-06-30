@@ -1,0 +1,27 @@
+<ion-view view-title="Utilisateurs">
+
+	<ion-content class="padding">
+		<ion-item  class="item-remove-animate item-icon-right" ng-repeat="user in Users"  href="#/tab/utilisateurs/{{user.firstName}}/{{user.name}}">
+			<h2>{{user.firstName}} {{user.name}}</h2>
+			<p>{{user.client ? "client":"facteur"}}</p>
+			<i class="icon ion-chevron-right icon-accessory"></i>
+			
+			<ion-option-button class="button button-block button-positive" ng-click="remove(chat)">
+				Supprimer un utilisateur
+			</ion-option-button>
+		</ion-item>        
+		
+		<ion-item ng-hide="!hideNewUser" align="center" class="item-icon-left">
+			<i class="icon ion-card"> </i>
+			Badgez pour ajouter un utilisateur
+		</ion-item>
+		<ion-item ng-hide="hideNewUser" >
+			<a class="button button-block button-positive" href="#/tab/utilisateurs/add"> <i class="icon ion-ios-personadd"> </i>Ajouter un utilisateur </a>
+		</ion-item>
+		
+		
+	</ion-content>
+		
+	
+
+</ion-view>

@@ -1,0 +1,32 @@
+<ion-view view-title="Paramètres">
+
+  <ion-content>
+
+	<ion-item ng-hide="!hideDoor" class="item-icon-right">
+		<i class="icon ion-unlocked"> </i>
+		La porte est ouverte
+	</ion-item>
+
+	<ion-item ng-hide="hideDoor" class="item-icon-right">	
+		<i class="icon ion-locked"> </i>
+		La porte est fermée
+	</ion-item>
+	
+	<ion-item ng-hide="!hideConnected" class="item-icon-right">
+		<i class="icon ion-social-rss"> </i>
+		Connecté à constellation
+	</ion-item>
+	
+	<ion-item ng-hide="hideConnected" class="item-icon-right">
+		<i class="icon ion-social-rss-outline"> </i>
+		Pas connecté à constellation
+	</ion-item>	
+	
+	<button class="button button-block" ng-click="showConfirm()">
+		<i class="icon ion-ios-trash"> </i>
+        Supprimer tous les utilisateurs
+    </button>
+	
+  </ion-content>
+  
+</ion-view>

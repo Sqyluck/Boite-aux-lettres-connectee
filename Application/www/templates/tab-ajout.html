@@ -1,0 +1,27 @@
+<ion-view view-title="Ajouter un utilisateur">
+
+	<ion-content class="padding">
+		<div class="list">
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">Nom</span>
+				<input type="text" id="name">
+			</label>
+					
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">Prénom</span>
+				<input type="text" id="firstname">
+			</label>
+			
+			<label class="item item-input item-select">
+				<div class="input-label">Type</div>
+				<select>
+					<option id="type" value="true">Client</option>
+					<option id="type" value="false">Facteur</option>
+				</select>
+			</label>
+		</div>
+		
+		<a class="button button-block button-positive" ng-click="add()"> Ajouter un utilisateur </a>
+	
+  </ion-content>
+</ion-view>

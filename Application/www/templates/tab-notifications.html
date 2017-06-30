@@ -1,0 +1,24 @@
+<ion-view view-title="Notifications">
+
+  <ion-content class="padding">
+
+	<!--<ion-item>
+	  <ion-icon name="logo-twitter" item-start></ion-icon>
+	  Followers
+	  <ion-badge item-end>{{isConnected}}</ion-badge>
+	</ion-item>-->
+
+	<ion-item ng-repeat="notif in Notifs" class="item-icon-left">
+		<p>Vous avez reçu un {{notif.type ? "courrier":"colis"}}</p>
+		<p>le {{notif.day}}/{{notif.month}}/{{notif.year}} à {{notif.hour}}:{{notif.minute}}</p>
+		<i class="icon ion-ios-email"> </i>
+	</ion-item>
+
+	<ion-item ng-hide="hideCollecter" class="item-icon-right">
+		{{UserCollect.firstName}} {{UserCollect.name}} a ramassé le courrier
+		<i class="icon ion-android-checkbox"> </i>
+    </ion-item>
+
+  </ion-content>
+
+</ion-view>
