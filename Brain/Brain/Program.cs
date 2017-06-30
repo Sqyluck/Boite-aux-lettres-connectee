@@ -66,7 +66,7 @@ namespace Brain
         public void loadUsers()
         {
             string line;
-            string url = @"C:\Luc\cours\Brain\Brain\UsersSave.txt";
+            string url = @"chemin\du\fichier\UsersSave.txt";
 
             StreamReader file = new StreamReader(url);
             while ((line = file.ReadLine()) != null)
@@ -89,7 +89,7 @@ namespace Brain
         }
         public void saveUsers() {
             List<string> save = new List<string>();
-            StreamWriter file = new StreamWriter(@"C:\Luc\cours\Brain\Brain\UsersSave.txt");
+            StreamWriter file = new StreamWriter(@"chemin\du\fichier\UsersSave.txt");
 
             foreach (User user in Users)
             {
