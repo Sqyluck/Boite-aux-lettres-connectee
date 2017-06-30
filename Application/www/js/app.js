@@ -21,7 +21,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngConstellation'])
       StatusBar.styleDefault();
     }
 
-	constellationConsumer.initializeClient("http://192.168.43.148:8088", "123456789", "Application Ionic");
+	constellationConsumer.initializeClient("adresseServerConstellation:port", "clef d'acces", "Application Ionic");
 
 	constellationConsumer.onConnectionStateChanged(function (change) {
 		if (change.newState === $.signalR.connectionState.connected) {
